@@ -61,8 +61,8 @@ flowchart LR
 ## 本模块的大模型钩子
 
 - **embedding**：词表里的一行就是一个向量（1.1）
-- **残差连接**： $h\leftarrow h+\operatorname{sublayer}(h)$ 就是向量加法（1.2）
-- **注意力打分**： $\mathbf{q}_i^\top\mathbf{k}_j$ 是点积（1.3）
+- **残差连接**：$h\leftarrow h+\operatorname{sublayer}(h)$ 就是向量加法（1.2）
+- **注意力打分**：$\mathbf{q}_i^\top\mathbf{k}_j$ 是点积（1.3）
 - **归一化**：RMSNorm 用 L2 范数的变体（1.4）
 - **语义检索**：余弦相似度（1.5）
 - **正交初始化 / 残差流分解**：投影（1.6）
@@ -73,15 +73,15 @@ flowchart LR
 2. 两个向量相加，什么时候长度不变？什么时候变短？
 3. 点积为负说明什么？点积为零说明什么？
 4. 为什么把向量归一化后，点积就等于余弦相似度？
-5. 投影 $`\operatorname{proj}_{\mathbf{u}}\mathbf{x}`$ 与残差 $`\mathbf{x}-\operatorname{proj}_{\mathbf{u}}\mathbf{x}`$ 有什么关系？
+5. 投影 $\operatorname{proj}_{\mathbf{u}}\mathbf{x}$ 与残差 $\mathbf{x}-\operatorname{proj}_{\mathbf{u}}\mathbf{x}$ 有什么关系？
 
 <details>
 <summary>自测答案</summary>
 
-1. 长度 $5$； $\cos\theta=3/5=0.6$。
+1. 长度 $5$；$\cos\theta=3/5=0.6$。
 2. 方向相同时变长；方向相反时可能变短（若长度相等则得零向量）；一般情况遵循平行四边形法则。
 3. 负：夹角大于 90°，方向相反成分更多；零：正交（垂直）。
-4. 归一化后 $`\|\mathbf{x}\|=\|\mathbf{y}\|=1`$，点积 $=\cos\theta$。
+4. 归一化后 $\|\mathbf{x}\|=\|\mathbf{y}\|=1$，点积 $=\cos\theta$。
 5. 两者正交，且 $\mathbf{x}=\operatorname{proj}+\text{残差}$，是正交分解。
 
 </details>
